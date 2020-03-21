@@ -49,16 +49,22 @@ static const struct option options[] = {
 	{ NULL, 0, 0, 0 }
 };
 
+#ifndef OVERRIDE_LIBDIR
 #define OVERRIDE_LIBDIR ABS_TOP_BUILDDIR "/testsuite/.libs/"
+#endif
+
+#ifndef OVERRIDE_LIBPREFIX
+#define OVERRIDE_LIBPREFIX ""
+#endif
 
 struct _env_config {
 	const char *key;
 	const char *ldpreload;
 } env_config[_TC_LAST] = {
-	[TC_UNAME_R] = { S_TC_UNAME_R, OVERRIDE_LIBDIR  "uname.so" },
-	[TC_ROOTFS] = { S_TC_ROOTFS, OVERRIDE_LIBDIR "path.so" },
-	[TC_INIT_MODULE_RETCODES] = { S_TC_INIT_MODULE_RETCODES, OVERRIDE_LIBDIR "init_module.so" },
-	[TC_DELETE_MODULE_RETCODES] = { S_TC_DELETE_MODULE_RETCODES, OVERRIDE_LIBDIR "delete_module.so" },
+	[TC_UNAME_R] = { S_TC_UNAME_R, OVERRIDE_LIBDIR OVERRIDE_LIBPREFIX "uname.so" },
+	[TC_ROOTFS] = { S_TC_ROOTFS, OVERRIDE_LIBDIR OVERRIDE_LIBPREFIX "path.so" },
+	[TC_INIT_MODULE_RETCODES] = { S_TC_INIT_MODULE_RETCODES, OVERRIDE_LIBDIR OVERRIDE_LIBPREFIX "init_module.so" },
+	[TC_DELETE_MODULE_RETCODES] = { S_TC_DELETE_MODULE_RETCODES, OVERRIDE_LIBDIR OVERRIDE_LIBPREFIX "delete_module.so" },
 };
 
 #define USEC_PER_SEC  1000000ULL

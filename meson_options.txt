@@ -1,0 +1,28 @@
+option('openssl', type : 'combo', choices : ['auto', 'true', 'false'],
+       description : 'openssl support')
+option('xz', type : 'combo', choices : ['auto', 'true', 'false'],
+       description : 'xz compression support')
+option('zlib', type : 'combo', choices : ['auto', 'true', 'false'],
+       description : 'zlib compression support')
+
+option('rootlibdir', type : 'string',
+       description : 'root dir to install libraries.')
+option('bashcompletiondir', type : 'string',
+       description : 'TODO')
+
+option('doc', type : 'boolean',
+       description : 'TODO')
+option('experimental', type : 'boolean', value : 'false',
+       description : 'experimental tools and features. Do not enable it unless you know what you are doing.')
+option('kmod-debug', type : 'boolean', value : 'false',
+       description : 'enable debug messages')
+option('logging', type : 'boolean', value : 'true',
+       description : 'system logging')
+option('manpages', type : 'boolean', value : 'true',
+       description : 'build manpages')
+option('python', type : 'boolean', value : 'false',
+       description : 'build Python libkmod bindings')
+option('test-modules', type : 'boolean', value : 'true',
+       description : 'build test modules during make check: cached modules will be used')
+option('tools', type : 'boolean', value : 'true',
+       description : 'build tools that provide same functionality as module-init-tools')
